@@ -1,68 +1,74 @@
 import time
-
 import pyautogui
 
-pi = "3.14159265358971040317211860820419000413375751149595015660235072835049530984448933087807693259939780541934144"
-time.sleep(3)
-
+time.sleep(5)
+file = open('C:/Users/fas_c/Desktop/pi-billion.txt')
+content = file.read()
+file.close()
 def switch(numero):
+
     if numero == "0":
+        print("Arriba")
         pyautogui.keyDown('up')
         time.sleep(1)
         pyautogui.keyUp('up')
-        return "Arriba"
+        return numero
     elif numero == "1":
+        print("Abajo")
         pyautogui.keyDown('down')
         time.sleep(1)
         pyautogui.keyUp('down')
-        return "Abajo"
+        return numero
     elif numero == "2":
-        pyautogui.keyDown('left')
-        time.sleep(1)
-        pyautogui.keyUp('lef')
-        return "Izquierda"
-    elif numero == "3":
-        pyautogui.keyDown('right')
-        time.sleep(1)
-        pyautogui.keyUp('right')
-        return "Derecha"
-    elif numero == "4":
-        pyautogui.keyDown('enter')
-        time.sleep(1)
-        pyautogui.keyUp('enter')
-        return "Enter"
-    elif numero == "5":
+        print("Izquierda")
         pyautogui.keyDown('left')
         time.sleep(1)
         pyautogui.keyUp('left')
-        return "Izquierda"
-    elif numero == "6":
+        return numero
+    elif numero == "3":
+        print("Derecha")
         pyautogui.keyDown('right')
         time.sleep(1)
         pyautogui.keyUp('right')
-        return "Derecha"
-    elif numero == "7":
-        pyautogui.keyDown('up')
-        time.sleep(1)
-        pyautogui.keyDown('up')
-        return "Arriba"
-    elif numero == "8":
-        pyautogui.keyDown('down')
-        time.sleep(1)
-        pyautogui.keyUp('down')
-        return "Abajo"
-    elif numero == "9":
+        return numero
+    elif numero == "4":
+        print("Enter")
         pyautogui.keyDown('enter')
         time.sleep(1)
         pyautogui.keyUp('enter')
-        return "Enter"
+        return numero
+    elif numero == "5":
+        print("Izquierda")
+        pyautogui.keyDown('left')
+        time.sleep(1)
+        pyautogui.keyUp('left')
+        return numero
+    elif numero == "6":
+        print("Derecha")
+        pyautogui.keyDown('right')
+        time.sleep(1)
+        pyautogui.keyUp('right')
+        return numero
+    elif numero == "7":
+        print("Arriba")
+        pyautogui.keyDown('up')
+        time.sleep(1)
+        pyautogui.keyDown('up')
+        return numero
+    elif numero == "8":
+        print("Abajo")
+        pyautogui.keyDown('down')
+        time.sleep(1)
+        pyautogui.keyUp('down')
+        return numero
+    elif numero == "9":
+        print("Enter")
+        pyautogui.keyDown('enter')
+        time.sleep(1)
+        pyautogui.keyUp('enter')
+        return numero
 
 
-for numero in range(len(pi)):
-    numeroPI = pi[numero]
+for numero in range(len(content)):
+    numeroPI = content[numero]
     print(switch(numeroPI))
-
-
-
-
-
