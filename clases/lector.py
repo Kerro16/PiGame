@@ -13,5 +13,5 @@ def leerarchivo():
     time.sleep(3)
     for index in range(len(archivotxt)):
         numeroPI = archivotxt[index]
-        print(clases.juegos.metalSlug(numeroPI, index))
+        print(clases.juegos.vampire(numeroPI, index))
 

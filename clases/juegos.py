@@ -4,19 +4,23 @@ pyautogui.FAILSAFE = False #Elimina un crash por mover el mouse o el teclado a c
 
 
 def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
-    print("Enter automatico por el indice en {}".format(index))
+    print(movimiento)
     pyautogui.keyDown(letraUno)
     pyautogui.keyDown(letraDos)
     time.sleep(1)
     pyautogui.keyUp(letraUno)
     pyautogui.keyUp(letraDos)
     return "El numero de PI es {} y esta en la posicion {}".format(numero, index)
+
+
 def presionarBotonSencillo(letra, index,numero, movimiento):
-    print("Enter automatico por el indice en {}".format(index))
+    print(movimiento)
     pyautogui.keyDown(letra)
     time.sleep(1)
     pyautogui.keyUp(letra)
     return "El numero de PI es {} y esta en la posicion {}".format(numero, index)
+
+
 def enterautomatico(index):
     print("Enter automatico por el indice en {}".format(index))
     pyautogui.keyDown('enter')
@@ -42,6 +46,7 @@ def vampire(numero, index):
         return presionarBotonSencillo('right',index,numero,'Derecha')
     elif numero == "7":
         return presionarBotonSencillo('up',index,numero,'Arriba')
+
     elif numero == "8":
         return presionarBotonSencillo('down',index,numero,'Abajo')
     elif numero == "9":
