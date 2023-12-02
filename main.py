@@ -1,5 +1,6 @@
 import time
 import pyautogui
+pyautogui.FAILSAFE = False #Elimina un crash por mover el mouse o el teclado a cierta parte
 
 time.sleep(5)
 #Cerdo
@@ -10,12 +11,13 @@ content = file.read()
 file.close()
 
 
-#Metal Slug /arriba, abajo, izquierda, derecha, a , s , d  se agrega un enter cada que el index pasa por 10 iteraciones/
-
-
-#def iteraciones(index):
- #   if index + 10
+#Metal Slug /arriba, abajo, izquierda, derecha, a , s , d  se agrega un enter cada que el index pasa por 9 iteraciones/
 def switch(numero, index):
+    if index%9 == 0:
+        print("Enter automatico por el indice en {}".format(index))
+        pyautogui.keyDown('enter')
+        time.sleep(1)
+        pyautogui.keyUp('enter')
     if numero == "0":
         print("Arriba + Disparar")
         pyautogui.keyDown('up')
