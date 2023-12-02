@@ -9,6 +9,8 @@ time.sleep(5)
 file = open('C:/Users/R20/Desktop/pi-billion.txt')
 content = file.read()
 file.close()
+print("Ya termine de leer el archivo")
+time.sleep(3)
 
 
 #Metal Slug /arriba, abajo, izquierda, derecha, a , s , d  se agrega un enter cada que el index pasa por 9 iteraciones/
