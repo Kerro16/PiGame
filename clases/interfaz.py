@@ -4,9 +4,10 @@ from PIL import Image, ImageTk
 
 class ClaseInterfaz:
     def __init__(self, root):
+        #root crea el frame o la interfaz
         self.root = root
         self.root.title("Interfaz con imagen")
-
+        #llenamos las rutas con los nombres de las imagenes
         self.imagen1 = Image.open("imagenes/arriba.jpg")  # Ruta de la imagen 1
         self.imagen2 = Image.open("imagenes/abajo.PNG")  # Ruta de la imagen 2
         self.imagen3 = Image.open("imagenes/derecha.jpg")
@@ -20,14 +21,19 @@ class ClaseInterfaz:
         self.imagen3 = self.imagen3.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
         self.imagen4 = self.imagen4.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
 
+        #convertimos a un frame de imagen dentro de la interfaz
         self.photo1 = ImageTk.PhotoImage(self.imagen1)
         self.photo2 = ImageTk.PhotoImage(self.imagen2)
-        self.photo3 = ImageTk.PhotoImage(self.imagen1)
-        self.photo4 = ImageTk.PhotoImage(self.imagen2)
+        self.photo3 = ImageTk.PhotoImage(self.imagen3)
+        self.photo4 = ImageTk.PhotoImage(self.imagen4)
 
+        #iniciamos la intefaz creando el label
         self.label = tk.Label(self.root, image=self.photo1)
+
         self.label.pack()
 
+
+    #Se manda llamar esta funcion dependio el numero que le mandemos desde juegos.py sera la imagen que muestre en la interfaz
     def cambiar_imagen(self, numero):
         if numero == "0":
             self.label.config(image=self.photo1)
