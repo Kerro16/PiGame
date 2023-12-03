@@ -7,7 +7,7 @@ from tkinter import filedialog
 def obtener_path():
     root = tk.Tk()
     root.withdraw()
-    file_path = filedialog.askopenfilename(title="Selecciona un archivo")
+    file_path =  "C:/Users/R20/Desktop/pi-billion.txt"           #filedialog.askopenfilename(title="Selecciona un archivo")
     return file_path
 
 def leerarchivo(file_path):
@@ -16,7 +16,7 @@ def leerarchivo(file_path):
             archivotxxt = file.read()
 
             print("Archivo leido exitosamente")
-            time.sleep(5)
+            time.sleep(2)
 
             for index in range(len(archivotxxt)):
                 numeroPI = archivotxxt[index]
