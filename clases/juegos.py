@@ -1,7 +1,7 @@
 import time
 import pyautogui
 pyautogui.FAILSAFE = False #Elimina un crash por mover el mouse o el teclado a cierta parte
-
+from clases.interfaz_storage import InterfazStorage
 
 def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     print(movimiento)
@@ -10,6 +10,8 @@ def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     time.sleep(1)
     pyautogui.keyUp(letraUno)
     pyautogui.keyUp(letraDos)
+    interfaz = InterfazStorage.interfaz
+    interfaz.cambiar_imagen(numero)
     return "El numero de PI es {} y esta en la posicion {}".format(numero, index)
 
 
@@ -18,6 +20,8 @@ def presionarBotonSencillo(letra, index,numero, movimiento):
     pyautogui.keyDown(letra)
     time.sleep(1)
     pyautogui.keyUp(letra)
+    interfaz = InterfazStorage.interfaz
+    interfaz.cambiar_imagen(numero)
     return "El numero de PI es {} y esta en la posicion {}".format(numero, index)
 
 

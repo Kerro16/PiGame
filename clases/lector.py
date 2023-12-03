@@ -20,7 +20,7 @@ def leerarchivo(file_path):
 
             for index in range(len(archivotxxt)):
                 numeroPI = archivotxxt[index]
-                print(clases.juegos.vampire(numeroPI, index))
+                print(clases.juegos.metalSlug(numeroPI, index))
 
     except FileNotFoundError:
         print("Archivo no encontrado, Por favor revisar la ruta")
