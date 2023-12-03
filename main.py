@@ -1,2 +1,5 @@
 import clases.lector
-clases.lector.leerarchivo()
+import clases.interfaz
+
+clases.lector.iniciarlector()
+#clases.interfaz.prueba()

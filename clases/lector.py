@@ -1,17 +1,37 @@
 import clases.juegos
 from clases.juegos import *
+import tkinter as tk
+from tkinter import filedialog
 
 
-def leerarchivo():
-    # Cerdo
-    # file = open('C:/Users/fas_c/Desktop/pi-billion.txt')
-    # R20
-    file = open('C:/Users/R20/Desktop/pi-billion.txt')
-    archivotxt = file.read()
-    file.close()
-    print("Ya termine de leer el archivo")
-    time.sleep(3)
-    for index in range(len(archivotxt)):
-        numeroPI = archivotxt[index]
-        print(clases.juegos.vampire(numeroPI, index))
+def obtener_path():
+    root = tk.Tk()
+    root.withdraw()
+    file_path = filedialog.askopenfilename(title="Selecciona un archivo")
+    return file_path
+
+def leerarchivo(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            archivotxxt = file.read()
+
+            print("Archivo leido exitosamente")
+            time.sleep(5)
+
+            for index in range(len(archivotxxt)):
+                numeroPI = archivotxxt[index]
+                print(clases.juegos.vampire(numeroPI, index))
+
+    except FileNotFoundError:
+        print("Archivo no encontrado, Por favor revisar la ruta")
+    except Exception as e:
+        print(f"Ocurrio un error: {e}")
+
+
+def iniciarlector():
+ file_path = obtener_path()
+ if file_path:
+    leerarchivo(file_path)
+
+
 
