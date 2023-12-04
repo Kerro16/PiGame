@@ -63,46 +63,46 @@ class ClaseInterfaz:
 
       # Se manda llamar esta funcion dependio el numero que le mandemos desde juegos.py sera la imagen que muestre en la interfaz
 
-    def cambiar_imagen2(self, numero):
-        if numero == "0":
-            self.label.config(image=self.photo1)
-        elif numero == "1":
-            self.label.config(image=self.photo2)
-        elif numero == "2":
-            self.label.config(image=self.photo4)
-        elif numero == "3":
-            self.label.config(image=self.photo3)
-        elif numero == "5":
-            self.label.config(image=self.photo4)
-        elif numero == "6":
-            self.label.config(image=self.photo3)
-        elif numero == "7":
-            self.label.config(image=self.photo1)
-        elif numero == "8":
-            self.label.config(image=self.photo2)
-        elif numero == "9":
-            self.label.config(image=self.photo5)
-
-
-
     def cambiar_imagen(self, numero):
-        if numero == "0":
-            self.label.config(image=self.photo1)
-        elif numero == "1":
-            self.label.config(image=self.photo2)
-        elif numero == "2":
-            self.label.config(image=self.photo4)
-        elif numero == "3":
-            self.label.config(image=self.photo2)
-        elif numero == "4":
-            self.label.config(image=self.photo5)
-        elif numero == "5":
-            self.label.config(image=self.photo6)
-        elif numero == "6":
-            self.label.config(image=self.photo3)
-        elif numero == "7":
-            self.label.config(image=self.photo1)
-        elif numero == "8":
-            self.label.config(image=self.photo3)
-        elif numero == "9":
-            self.label.config(image=self.photo4)
+        if clases.globales.mi_variable_global == "Vampire":
+            if numero == "0":
+                self.label.config(image=self.photo1)
+            elif numero == "1":
+                self.label.config(image=self.photo2)
+            elif numero == "2":
+                self.label.config(image=self.photo4)
+            elif numero == "3":
+                self.label.config(image=self.photo3)
+            elif numero == "5":
+                self.label.config(image=self.photo4)
+            elif numero == "6":
+                self.label.config(image=self.photo3)
+            elif numero == "7":
+                self.label.config(image=self.photo1)
+            elif numero == "8":
+                self.label.config(image=self.photo2)
+            elif numero == "9":
+                self.label.config(image=self.photo5)
+
+        if clases.globales.mi_variable_global == "MetalSlug":
+            if numero == "0":
+                self.label.config(image=self.photo1)
+            elif numero == "1":
+                self.label.config(image=self.photo2)
+            elif numero == "2":
+                self.label.config(image=self.photo4)
+            elif numero == "3":
+                self.label.config(image=self.photo3)
+            elif numero == "4":
+                self.label.config(image=self.photo6)
+            elif numero == "5":
+                self.label.config(image=self.photo5)
+            elif numero == "6":
+                self.label.config(image=self.photo3)
+            elif numero == "7":
+                self.label.config(image=self.photo1)
+            elif numero == "8":
+                self.label.config(image=self.photo3)
+            elif numero == "9":
+                self.label.config(image=self.photo4)
+
