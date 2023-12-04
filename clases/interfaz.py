@@ -1,6 +1,7 @@
 # interfaz.py
 import tkinter as tk
 from PIL import Image, ImageTk
+import clases.globales
 
 class ClaseInterfaz:
     def __init__(self, root):
@@ -29,12 +30,47 @@ class ClaseInterfaz:
 
         #iniciamos la intefaz creando el label
         self.label = tk.Label(self.root, image=self.photo1)
-
         self.label.pack()
+
+    #Con esta clase que se llama cuando presionamos los bonotes de la primera interfaz llenamos el valor de la variable globlal mi_variable_global
+    def enviar_nombre(self, nombre):
+        clases.globales.mi_variable_global = nombre
+        print(f"Nombre enviado: {clases.globales.mi_variable_global}")
+
+
+    #Con esta clase podemos crear una interfaz con los botones, al precionar uno le mandaremos ese valor a la clase enviar_nombre
+    def crear_interfaz_con_botones(self):
+        # Aquí agrega el código para crear los botones y su funcionalidad
+        frame = tk.Frame(self.root)
+        frame.pack()
+
+        metal_slug_btn = tk.Button(frame, text="MetalSlug", command=lambda: self.enviar_nombre("MetalSlug"))
+        metal_slug_btn.pack(side=tk.LEFT, padx=10, pady=20)
+
+        vampire_btn = tk.Button(frame, text="Vampire", command=lambda: self.enviar_nombre("Vampire"))
+        vampire_btn.pack(side=tk.LEFT, padx=10, pady=20)
+
 
 
     #Se manda llamar esta funcion dependio el numero que le mandemos desde juegos.py sera la imagen que muestre en la interfaz
     def cambiar_imagen(self, numero):
+        if numero == "0":
+            self.label.config(image=self.photo1)
+        elif numero == "1":
+            self.label.config(image=self.photo2)
+        elif numero == "2":
+            self.label.config(image=self.photo4)
+        elif numero == "3":
+            self.label.config(image=self.photo2)
+        elif numero == "5":
+            self.label.config(image=self.photo1)
+        elif numero == "6":
+            self.label.config(image=self.photo2)
+        elif numero == "7":
+            self.label.config(image=self.photo4)
+        elif numero == "8":
+            self.label.config(image=self.photo2)
+    """def cambiar_imagen(self, numero):
         if numero == "0":
             self.label.config(image=self.photo1)
         elif numero == "1":
@@ -50,5 +86,5 @@ class ClaseInterfaz:
         elif numero == "8":
             self.label.config(image=self.photo3)
         elif numero == "9":
-            self.label.config(image=self.photo4)
+            self.label.config(image=self.photo4)"""
         # Agregar más condiciones según sea necesario para más números
