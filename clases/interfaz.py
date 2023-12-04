@@ -65,17 +65,16 @@ class ClaseInterfaz:
         elif numero == "2":
             self.label.config(image=self.photo4)
         elif numero == "3":
-            self.label.config(image=self.photo3)
-        elif numero == "5":
-            self.label.config(image=self.photo4)
-        elif numero == "6":
-            self.label.config(image=self.photo3)
-        elif numero == "7":
-            self.label.config(image=self.photo1)
-
-            """   elif numero == "8":
             self.label.config(image=self.photo2)
-    def cambiar_imagen(self, numero):
+        elif numero == "5":
+            self.label.config(image=self.photo1)
+        elif numero == "6":
+            self.label.config(image=self.photo2)
+        elif numero == "7":
+            self.label.config(image=self.photo4)
+        elif numero == "8":
+            self.label.config(image=self.photo2)
+    """def cambiar_imagen(self, numero):
         if numero == "0":
             self.label.config(image=self.photo1)
         elif numero == "1":
@@ -93,3 +92,4 @@ class ClaseInterfaz:
         elif numero == "9":
             self.label.config(image=self.photo4)"""
         # Agregar más condiciones según sea necesario para más números
+
