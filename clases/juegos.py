@@ -9,25 +9,27 @@ from clases.interfaz_storage import InterfazStorage
 #Todos los botones hacen un keydown o keyup que es el presionado, el interfaz.cambiar_imagen se usa para cambiar la imagen en la interfaz
 def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     print(movimiento)
+    interfaz = InterfazStorage.interfaz
+    interfaz.cambiar_imagen(numero)
+    print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
     pyautogui.keyDown(letraUno)
     pyautogui.keyDown(letraDos)
     time.sleep(1)
     pyautogui.keyUp(letraUno)
     pyautogui.keyUp(letraDos)
-    interfaz = InterfazStorage.interfaz
-    interfaz.cambiar_imagen(numero)
-    return "El numero de PI es {} y esta en la posicion {}".format(numero, index)
+    return "pensanding..."
 
 
 
 def presionarBotonSencillo(letra, index,numero, movimiento):
     print(movimiento)
     interfaz = InterfazStorage.interfaz
-    interfaz.cambiar_imagen(numero)
+    interfaz.cambiar_imagen2(numero)
+    print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
     pyautogui.keyDown(letra)
     time.sleep(1)
     pyautogui.keyUp(letra)
-    return "El numero de PI es {} y esta en la posicion {}".format(numero, index)
+    return "pensanding...."
 
 
 def enterautomatico(index):

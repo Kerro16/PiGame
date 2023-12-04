@@ -2,7 +2,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import clases.globales
-
+import sys
 class ClaseInterfaz:
     def __init__(self, root):
         #root crea el frame o la interfaz
@@ -26,8 +26,8 @@ class ClaseInterfaz:
         self.imagen5 = self.imagen5.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
         self.imagen6 = self.imagen6.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
 
-        #agregamos el boton de cerrar dinterfaz
-        self.boton_cerrar = tk.Button(self.root, text="Cerrar", command=self.root.destroy)
+        #agregamos el boton de cerrar interfaz
+        self.boton_cerrar = tk.Button(self.root, text="Cerrar", command= lambda: [self.root.destroy(), sys.exit()])
         self.boton_cerrar.pack()
 
         #convertimos a un frame de imagen dentro de la interfaz
@@ -59,8 +59,6 @@ class ClaseInterfaz:
 
         vampire_btn = tk.Button(frame, text="Vampire", command=lambda: [self.enviar_nombre("Vampire"),self.root.destroy()])
         vampire_btn.pack(side=tk.LEFT, padx=10, pady=20)
-
-
 
 
       # Se manda llamar esta funcion dependio el numero que le mandemos desde juegos.py sera la imagen que muestre en la interfaz
