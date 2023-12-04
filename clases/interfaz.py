@@ -23,7 +23,8 @@ class ClaseInterfaz:
         self.imagen4 = self.imagen4.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
 
         #agregamos el boton de cerrar interfaz
-
+        self.boton_cerrar = tk.Button(self.root, text="Cerrar", command=self.root.destroy)
+        self.boton_cerrar.pack()
 
         #convertimos a un frame de imagen dentro de la interfaz
         self.photo1 = ImageTk.PhotoImage(self.imagen1)
