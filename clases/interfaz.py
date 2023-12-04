@@ -8,6 +8,7 @@ class ClaseInterfaz:
         #root crea el frame o la interfaz
         self.root = root
         self.root.title("Interfaz con imagen")
+
         #llenamos las rutas con los nombres de las imagenes
         self.imagen1 = Image.open("imagenes/arriba.jpg")  # Ruta de la imagen 1
         self.imagen2 = Image.open("imagenes/abajo.PNG")  # Ruta de la imagen 2
@@ -42,6 +43,22 @@ class ClaseInterfaz:
         self.label = tk.Label(self.root, image=self.photo1)
         self.label.pack()
 
+
+        self.root.title("Interfaz con numero")
+    # definimos la interfaz que muestra el numero gigante de Pi
+        self.root.geometry("650x800")  # Tamaño de la ventana
+        self.canvas = tk.Canvas(self.root, width=600, height=300, bg="orange")
+        self.canvas.pack()
+
+
+        self.numero_actual = "3.1416"
+        self.texto_numero = self.canvas.create_text(300, 150, text=str(self.numero_actual), font=("Arial", 200),fill="white")
+    # con esta clase cambiamos el numero de la interfaz con el numero gigante
+    def cambiar_numero_gigante(self, nuevo_numero):
+        self.numero_actual = nuevo_numero
+        self.canvas.itemconfig(self.texto_numero, text=str(self.numero_actual))
+
+
     #Con esta clase que se llama cuando presionamos los bonotes de la primera interfaz llenamos el valor de la variable globlal mi_variable_global
     def enviar_nombre(self, nombre):
         clases.globales.mi_variable_global = nombre
@@ -62,6 +79,15 @@ class ClaseInterfaz:
 
 
       # Se manda llamar esta funcion dependio el numero que le mandemos desde juegos.py sera la imagen que muestre en la interfaz
+    def interfazdeNumeroGigante(self,root):
+        self.root3 = root
+        self.root3.title("Interfaz con numero")
+        # definimos la interfaz que muestra el numero gigante de Pi
+        self.root3.geometry("600x300")  # Tamaño de la ventana
+        self.canvas = tk.Canvas(self.root3, width=600, height=300, bg="orange")
+        self.canvas.pack()
+
+        self.canvas.create_text(300, 150, text="5", font=("Arial", 200), fill="white")
 
     def cambiar_imagen(self, numero):
         if clases.globales.mi_variable_global == "Vampire":
@@ -105,4 +131,8 @@ class ClaseInterfaz:
                 self.label.config(image=self.photo3)
             elif numero == "9":
                 self.label.config(image=self.photo4)
+
+
+
+
 

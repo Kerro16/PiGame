@@ -11,6 +11,7 @@ def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     print(movimiento)
     interfaz = InterfazStorage.interfaz
     interfaz.cambiar_imagen(numero)
+    interfaz.cambiar_numero_gigante(numero)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
     pyautogui.keyDown(letraUno)
     pyautogui.keyDown(letraDos)
@@ -25,6 +26,7 @@ def presionarBotonSencillo(letra, index,numero, movimiento):
     print(movimiento)
     interfaz = InterfazStorage.interfaz
     interfaz.cambiar_imagen(numero)
+    interfaz.cambiar_numero_gigante(numero)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
     pyautogui.keyDown(letra)
     time.sleep(1)
