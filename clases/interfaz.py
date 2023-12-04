@@ -2,6 +2,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import clases.globales
+import  sys
 
 class ClaseInterfaz:
     def __init__(self, root):
@@ -23,7 +24,7 @@ class ClaseInterfaz:
         self.imagen4 = self.imagen4.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
 
         #agregamos el boton de cerrar interfaz
-        self.boton_cerrar = tk.Button(self.root, text="Cerrar", command=self.root.destroy)
+        self.boton_cerrar = tk.Button(self.root, text="Cerrar", command=lambda: [self.root.destroy(), sys.exit()])
         self.boton_cerrar.pack()
 
         #convertimos a un frame de imagen dentro de la interfaz
@@ -92,3 +93,4 @@ class ClaseInterfaz:
         elif numero == "9":
             self.label.config(image=self.photo4)"""
         # Agregar más condiciones según sea necesario para más números
+
