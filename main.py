@@ -8,31 +8,27 @@ from clases.interfaz_storage import InterfazStorage
 #Crera la interfaz de seleccion de juego una vez que cerremos esta interfaz corre el hilo donde empieza a leer el archivo y despues abre la segunda interfaz que cambia de imagenes
 #Existe una clase dentro de interfaz que manda el valor del nombre del juego y esque hara el cambio dentro de la clase de juegos por nosotros paran o hacerlo atravez de codigo
 if __name__ == "__main__":
-    root = tk.Tk()
-    clases.interfaz_storage.InterfazStorage.interfaz = ClaseInterfaz(root)
+    root2 = tk.Tk()
+    clases.interfaz_storage.InterfazStorage.interfaz = ClaseInterfaz(root2)
     interfaz = InterfazStorage.interfaz
     interfaz.crear_interfaz_con_botones()
-    root.mainloop()
+    root2.mainloop()
 
 #Se usa un hilo para que se pueda leer el numero de Pi y dar ls instrucciones mientras la interfaz esta abierta
 hilo_log = threading.Thread(target=clases.lector.iniciarlector)
 hilo_log.start()
 
-#aqui abrimos la interfaz
+#aqui abrimos la interfaz se defino un root por cada interfaz que queremos abrir.
 def main():
-    root2 = tk.Tk()
-    clases.interfaz_storage.InterfazStorage.interfaz = ClaseInterfaz(root2)
-    root2.mainloop()
+    root = tk.Tk()
+    clases.interfaz_storage.InterfazStorage.interfaz = ClaseInterfaz(root)
+    interfaz3= InterfazStorage.interfaz
+   # interfaz3.interfazdeNumeroGigante(root3)
+    root.mainloop()
+
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
 
 
 
