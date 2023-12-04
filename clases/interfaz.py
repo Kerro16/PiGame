@@ -22,6 +22,9 @@ class ClaseInterfaz:
         self.imagen3 = self.imagen3.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
         self.imagen4 = self.imagen4.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
 
+        #agregamos el boton de cerrar interfaz
+
+
         #convertimos a un frame de imagen dentro de la interfaz
         self.photo1 = ImageTk.PhotoImage(self.imagen1)
         self.photo2 = ImageTk.PhotoImage(self.imagen2)
@@ -44,10 +47,10 @@ class ClaseInterfaz:
         frame = tk.Frame(self.root)
         frame.pack()
 
-        metal_slug_btn = tk.Button(frame, text="MetalSlug", command=lambda: self.enviar_nombre("MetalSlug"))
+        metal_slug_btn = tk.Button(frame, text="MetalSlug", command=lambda: [self.enviar_nombre("MetalSlug"),self.root.destroy()])
         metal_slug_btn.pack(side=tk.LEFT, padx=10, pady=20)
 
-        vampire_btn = tk.Button(frame, text="Vampire", command=lambda: self.enviar_nombre("Vampire"))
+        vampire_btn = tk.Button(frame, text="Vampire", command=lambda: [self.enviar_nombre("Vampire"),self.root.destroy()])
         vampire_btn.pack(side=tk.LEFT, padx=10, pady=20)
 
 
