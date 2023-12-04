@@ -17,7 +17,7 @@ funciones_juegos = {
 def obtener_path():
     root = tk.Tk()
     root.withdraw()
-    file_path = "C:/Users/fas_c/Desktop/pi-billion.txt"  # filedialog.askopenfilename(title="Selecciona un archivo")
+    file_path = "C:/Users/R20/Desktop/pi-billion.txt"  # filedialog.askopenfilename(title="Selecciona un archivo")
     return file_path
 
 
