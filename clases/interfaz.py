@@ -63,7 +63,7 @@ class ClaseInterfaz:
             "6": self.photos[6],
         }
 
-    #Aqui se crea la interfz que crea el mensaje de la accion dice numero pq antes mostraba un numero jeje salu2
+    #Aqui se crea la interfz que crea el mensaje de la accion dice numero pq antes mostraba un numero jeje salu2/
     def crear_interfaz_numero(self):
                             self.root.title("Interfaz con numero")
                             self.root.geometry("600x900")
