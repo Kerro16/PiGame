@@ -2,11 +2,12 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import clases.globales
-import sys
+
 class ClaseInterfaz:
     def __init__(self, root):
         #root crea el frame o la interfaz
         self.root = root
+        self.root.protocol('WM_DELETE_WINDOW', self.cerrar_hilo)
         self.root.title("Interfaz con imagen")
         self.cargar_imagenes()
         self.crear_frame_pack()
@@ -33,8 +34,6 @@ class ClaseInterfaz:
     def crear_frame_pack(self):
             self.pack_frame = tk.Frame(self.root)
             self.pack_frame.pack()
-            self.boton_cerrar = tk.Button(self.pack_frame, text="Cerrar", command=self.cerrar_interfaz)
-            self.boton_cerrar.pack()
 
     #se crea un frame para tener las imagenes y los cuadros se usa grid
     def crear_frame_grid(self):
@@ -66,9 +65,6 @@ class ClaseInterfaz:
                 # Agregar para el resto de las imágenes según su número
             }
 
-    def cerrar_interfaz(self):
-                        self.root.destroy()
-                        sys.exit()
 
     #Aqui se crea la interfz que crea el mensaje de la accion dice numero pq antes mostraba un numero jeje salu2
     def crear_interfaz_numero(self):
@@ -191,6 +187,10 @@ class ClaseInterfaz:
             elif numero == "9":
                 self.label.config(image=self.imagenes_por_numero.get("3"))
 
+    def cerrar_hilo(self):
+        clases.globales.mi_variable_global = "Cerrar"
+        print("Cerrando aplicacion")
+        self.root.destroy()
 
 
 
