@@ -27,8 +27,12 @@ class ClaseInterfaz:
         self.imagen5 = self.imagen5.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
         self.imagen6 = self.imagen6.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
 
+        # Frame para los elementos con pack()
+        self.pack_frame = tk.Frame(self.root)
+        self.pack_frame.pack()
+
         #agregamos el boton de cerrar interfaz
-        self.boton_cerrar = tk.Button(self.root, text="Cerrar", command= lambda: [self.root.destroy(), sys.exit()])
+        self.boton_cerrar = tk.Button(self.pack_frame, text="Cerrar", command=lambda: [self.root.destroy(), sys.exit()])
         self.boton_cerrar.pack()
 
         #convertimos a un frame de imagen dentro de la interfaz
@@ -39,22 +43,66 @@ class ClaseInterfaz:
         self.photo5 = ImageTk.PhotoImage(self.imagen5)
         self.photo6 = ImageTk.PhotoImage(self.imagen6)
 
+        # Frame para los elementos con grid()
+        self.grid_frame = tk.Frame(self.root)
+        self.grid_frame.pack()
+        # Frame para los elementos con grid()
+        self.grid_frame2 = tk.Frame(self.root)
+        self.grid_frame2.pack()
+
         #iniciamos la intefaz creando el label
-        self.label = tk.Label(self.root, image=self.photo1)
-        self.label.pack()
+        #self.label = tk.Label(self.root, image=self.photo1)
+        #self.label.pack()
+
+        self.label = tk.Label(self.grid_frame, image=self.photo1)
+        self.label.grid(row=0, column=0)
 
 
         self.root.title("Interfaz con numero")
-    # definimos la interfaz que muestra el numero gigante de Pi
+        # definimos la interfaz que muestra el numero gigante de Pi
         self.root.geometry("650x800")  # Tamaño de la ventana
         self.canvas = tk.Canvas(self.root, width=600, height=300, bg="orange")
         self.canvas.pack()
 
 
-        self.numero_actual = "3.1416"
-        self.texto_numero = self.canvas.create_text(300, 150, text=str(self.numero_actual), font=("Arial", 200),fill="white")
+        self.numero_actual = "Pausa"
+        self.texto_numero = self.canvas.create_text(300, 150, text=str(self.numero_actual), font=("Arial", 110),fill="white")
     # con esta clase cambiamos el numero de la interfaz con el numero gigante
-    def cambiar_numero_gigante(self, nuevo_numero):
+        self.create_number_squares()
+
+
+    #definimos los cuadrados naranjas
+    def create_square(self, number, color):
+        label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=5, height=2, font=("Arial", 12))
+        return label
+    #Cuadrado rojo
+    def create_square_red(self, number, color):
+        label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=10, height=4, font=("Arial", 24))
+        return label
+    #actualizamos los numeros en los cuadrados
+    def update_numbers(self,new_numbers):
+        for i, number in enumerate(new_numbers):
+            self.squares[i].configure(text=str(number))
+    #datos de los cuadrados y creacion de los mismos
+    def create_number_squares(self):
+        colors = ["orange","red"]
+        initial_numbers = list(range(1, 10))
+
+        squares = []
+        for i in range(9):
+            if(i != 8):
+                square = self.create_square(0, colors[0])
+                square.grid(row=1, column=i, padx=0, pady=0)
+                squares.append(square)
+            else:
+                square = self.create_square_red(0, colors[1])
+                square.grid(row=1, column=i, padx=0, pady=0)
+                squares.append(square)
+
+        self.squares = squares
+
+
+    def cambiar_accion(self, nuevo_numero):
         self.numero_actual = nuevo_numero
         self.canvas.itemconfig(self.texto_numero, text=str(self.numero_actual))
 

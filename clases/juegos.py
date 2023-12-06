@@ -3,6 +3,17 @@ import pyautogui
 pyautogui.FAILSAFE = False #Elimina un crash por mover el mouse o el teclado a cierta parte
 from clases.interfaz_storage import InterfazStorage
 
+new_numbers = [0, 0, 0, 0, 0, 0, 0, 0, 9]
+
+
+
+
+def actualizar_fila(numero):
+    for i in range(len(new_numbers) - 1):
+        new_numbers[i] = new_numbers[i + 1]
+        new_numbers[8] = numero
+
+
 
 
 
@@ -11,7 +22,9 @@ def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     print(movimiento)
     interfaz = InterfazStorage.interfaz
     interfaz.cambiar_imagen(numero)
-    interfaz.cambiar_numero_gigante(numero)
+    interfaz.cambiar_accion(movimiento)
+    actualizar_fila(numero)
+    interfaz.update_numbers(new_numbers)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
     pyautogui.keyDown(letraUno)
     pyautogui.keyDown(letraDos)
@@ -26,7 +39,9 @@ def presionarBotonSencillo(letra, index,numero, movimiento):
     print(movimiento)
     interfaz = InterfazStorage.interfaz
     interfaz.cambiar_imagen(numero)
-    interfaz.cambiar_numero_gigante(numero)
+    interfaz.cambiar_accion(movimiento)
+    actualizar_fila(numero)
+    interfaz.update_numbers(new_numbers)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
     pyautogui.keyDown(letra)
     time.sleep(1)
@@ -82,7 +97,7 @@ def metalSlug(numero, index):
     elif numero == "5":
         return presionarBotonSencillo('s',index,numero,'Granada')
     elif numero == "6":
-        return presionarBotonDoble('rigth', 'a', index, numero, 'Derecha + Disparo')
+        return presionarBotonDoble('right', 'a', index, numero, 'Derecha + Disparo')
     elif numero == "7":
         return presionarBotonDoble('up', 'a', index, numero, 'Arriba + Disparo')
     elif numero == "8":
