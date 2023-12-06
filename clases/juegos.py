@@ -14,9 +14,6 @@ def actualizar_fila(numero):
         new_numbers[8] = numero
 
 
-
-
-
 #Todos los botones hacen un keydown o keyup que es el presionado, el interfaz.cambiar_imagen se usa para cambiar la imagen en la interfaz
 def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     print(movimiento)
@@ -32,7 +29,6 @@ def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     pyautogui.keyUp(letraUno)
     pyautogui.keyUp(letraDos)
     return "pensanding..."
-
 
 
 def presionarBotonSencillo(letra, index,numero, movimiento):

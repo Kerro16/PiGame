@@ -68,31 +68,31 @@ class ClaseInterfaz:
     def crear_interfaz_numero(self):
                             self.root.title("Interfaz con numero")
                             self.root.geometry("600x900")
-                            self.canvas = tk.Canvas(self.root, width=600, height=300, bg="orange")
+                            self.canvas = tk.Canvas(self.root, width=600, height=300, bg="#ffd166")
                             self.canvas.pack()
                             self.numero_actual = "Pausa"
                             self.texto_numero = self.canvas.create_text(300, 150, text=str(self.numero_actual),
-                                                                        font=("Arial", 110), fill="white")
+                                                                        font=("Roboto", 110), fill="#073b4c")
                             self.create_number_squares()  # Asumiendo que esta función está definida en otro lugar
 
 
     #definimos los cuadrados naranjas
     def create_square(self, number, color):
-        label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=5, height=2, font=("Arial", 12))
+        label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=5, height=2, font=("Roboto", 12))
         return label
 
 
     #Cuadrado rojo
     def create_square_red(self, number, color):
-        label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=10, height=4, font=("Arial", 24))
+        label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=10, height=4, font=("Roboto", 24))
         return label
 
     def cuadro_numero_index(self):
-        self.canvaso = tk.Canvas(self.root, width=600, height=80, bg="#b3ffb3")  # Canvas de 600x100, fondo verde claro
+        self.canvaso = tk.Canvas(self.root, width=600, height=80, bg="#8fd8a0")  # Canvas de 600x100, fondo verde claro
         self.canvaso.pack()
         self.numero_actual = "Han pasado 0 números de Pi"
         self.texto_index = self.canvaso.create_text(300, 40, text=str(self.numero_actual),
-                                                    font=("Arial", 30), fill="black", anchor="center")
+                                                    font=("Roboto", 30), fill="#073b4c", anchor="center")
 
     #actualizamos los numeros en los cuadrados
     def update_numbers(self,new_numbers):
@@ -102,7 +102,7 @@ class ClaseInterfaz:
 
     #datos de los cuadrados y creacion de los mismos
     def create_number_squares(self):
-        colors = ["orange","red"]
+        colors = ["#8fd8a0","#ff6b6b"]
         initial_numbers = list(range(1, 10))
         squares = []
         for i in range(9):
@@ -121,7 +121,7 @@ class ClaseInterfaz:
         self.accion_actual = nueva_accion
         self.canvas.itemconfig(self.texto_numero, text=str(self.accion_actual))
         self.nueva_index = nueva_index
-        self.canvaso.itemconfig(self.texto_index, text="Han pasado 1000{} números de Pi".format(str(self.nueva_index)))
+        self.canvaso.itemconfig(self.texto_index, text="Han pasado {} números de Pi".format(str(self.nueva_index)))
 
 
     #Con esta clase que se llama cuando presionamos los bonotes de la primera interfaz llenamos el valor de la variable globlal mi_variable_global
