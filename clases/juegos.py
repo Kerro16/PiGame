@@ -22,7 +22,7 @@ def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     print(movimiento)
     interfaz = InterfazStorage.interfaz
     interfaz.cambiar_imagen(numero)
-    interfaz.cambiar_accion(movimiento)
+    interfaz.cambiar_accion(movimiento,index)
     actualizar_fila(numero)
     interfaz.update_numbers(new_numbers)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
@@ -39,7 +39,7 @@ def presionarBotonSencillo(letra, index,numero, movimiento):
     print(movimiento)
     interfaz = InterfazStorage.interfaz
     interfaz.cambiar_imagen(numero)
-    interfaz.cambiar_accion(movimiento)
+    interfaz.cambiar_accion(movimiento,index)
     actualizar_fila(numero)
     interfaz.update_numbers(new_numbers)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))

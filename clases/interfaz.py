@@ -37,12 +37,11 @@ class ClaseInterfaz:
 
     #se crea un frame para tener las imagenes y los cuadros se usa grid
     def crear_frame_grid(self):
-                self.cuadro_numero_index(67777)
+                self.cuadro_numero_index()
                 self.grid_frame = tk.Frame(self.root)
                 self.grid_frame.pack()
                 self.grid_frame2 = tk.Frame(self.root)
                 self.grid_frame2.pack()
-
 
 
     #Se muestra aqui la imagene (por el for se muestran todas por ahora pero sin el for no tenemos label para poder usar la funcion de cambiar_imagen
@@ -64,7 +63,6 @@ class ClaseInterfaz:
                 "6": self.photos[6],
                 # Agregar para el resto de las imágenes según su número
             }
-
 
     #Aqui se crea la interfz que crea el mensaje de la accion dice numero pq antes mostraba un numero jeje salu2
     def crear_interfaz_numero(self):
@@ -89,12 +87,12 @@ class ClaseInterfaz:
         label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=10, height=4, font=("Arial", 24))
         return label
 
-    def cuadro_numero_index(self, index):
-        self.canvas = tk.Canvas(self.root, width=200, height=100, bg="orange")
-        self.canvas.pack()
-        self.numero_actual = "Han pasado {} numeros de Pi".format(index)
-        self.texto_numero = self.canvas.create_text(100, 150, text=str(self.numero_actual),
-                                                    font=("Arial", 110), fill="white")
+    def cuadro_numero_index(self):
+        self.canvaso = tk.Canvas(self.root, width=600, height=80, bg="#b3ffb3")  # Canvas de 600x100, fondo verde claro
+        self.canvaso.pack()
+        self.numero_actual = "Han pasado 0 números de Pi"
+        self.texto_index = self.canvaso.create_text(300, 40, text=str(self.numero_actual),
+                                                    font=("Arial", 30), fill="black", anchor="center")
 
     #actualizamos los numeros en los cuadrados
     def update_numbers(self,new_numbers):
@@ -118,10 +116,12 @@ class ClaseInterfaz:
                 squares.append(square)
         self.squares = squares
 
-    #aqui se cambia la accion en el cuadro gigante
-    def cambiar_accion(self, nueva_accion):
+    #aqui se cambia la accion en el cuadro gigante y el numero del index hasta arriba
+    def cambiar_accion(self, nueva_accion, nueva_index):
         self.accion_actual = nueva_accion
         self.canvas.itemconfig(self.texto_numero, text=str(self.accion_actual))
+        self.nueva_index = nueva_index
+        self.canvaso.itemconfig(self.texto_index, text="Han pasado 1000{} números de Pi".format(str(self.nueva_index)))
 
 
     #Con esta clase que se llama cuando presionamos los bonotes de la primera interfaz llenamos el valor de la variable globlal mi_variable_global
