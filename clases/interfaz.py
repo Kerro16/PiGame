@@ -11,11 +11,12 @@ class ClaseInterfaz:
 
         #llenamos las rutas con los nombres de las imagenes
         self.imagen1 = Image.open("imagenes/arriba.jpg")  # Ruta de la imagen 1
-        self.imagen2 = Image.open("imagenes/abajo.PNG")  # Ruta de la imagen 2
+        self.imagen2 = Image.open("imagenes/abajo.jpg")  # Ruta de la imagen 2
         self.imagen3 = Image.open("imagenes/derecha.jpg")  # Ruta de la imagen 3
         self.imagen4 = Image.open("imagenes/izquierda.jpg")  # Ruta de la imagen 4
-        self.imagen5 = Image.open("imagenes/granada.png")  # Ruta de la imagen 5
+        self.imagen5 = Image.open("imagenes/granada.jpg")  # Ruta de la imagen 5
         self.imagen6 = Image.open("imagenes/disparar.jpg")  # Ruta de la imagen 6
+        self.imagen7 = Image.open("imagenes/enter.jpg")  # Ruta de la imagen 7
 
         # Redimensionar las imágenes al tamaño deseado (600x300)
         ancho_deseado = 600
@@ -26,6 +27,7 @@ class ClaseInterfaz:
         self.imagen4 = self.imagen4.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
         self.imagen5 = self.imagen5.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
         self.imagen6 = self.imagen6.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
+        self.imagen7 = self.imagen7.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
 
         # Frame para los elementos con pack()
         self.pack_frame = tk.Frame(self.root)
@@ -42,6 +44,7 @@ class ClaseInterfaz:
         self.photo4 = ImageTk.PhotoImage(self.imagen4)
         self.photo5 = ImageTk.PhotoImage(self.imagen5)
         self.photo6 = ImageTk.PhotoImage(self.imagen6)
+        self.photo7 = ImageTk.PhotoImage(self.imagen7)
 
         # Frame para los elementos con grid()
         self.grid_frame = tk.Frame(self.root)
@@ -147,6 +150,8 @@ class ClaseInterfaz:
                 self.label.config(image=self.photo4)
             elif numero == "3":
                 self.label.config(image=self.photo3)
+            elif numero == "4":
+                self.label.config(image=self.photo5)
             elif numero == "5":
                 self.label.config(image=self.photo4)
             elif numero == "6":
