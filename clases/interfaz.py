@@ -52,7 +52,7 @@ class ClaseInterfaz:
                  label.grid(row=0, column=idx)
                  self.labels.append(label)
             self.label = self.labels[0]
-            #ya con el label solo hay que darles un numero de foto que coincida con su posicion en la biblioteca de imagen_paht
+            #ya con el label solo hay que darles un numero de foto que coincida con su posicion en la biblioteca de imagen_paht.
             self.imagenes_por_numero = {
                 "0": self.photos[0],
                 "1": self.photos[1],

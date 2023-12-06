@@ -7,7 +7,7 @@ new_numbers = [0, 0, 0, 0, 0, 0, 0, 0, 9]
 
 
 
-#Actualizamos el array new_numbers con los numeros nuevos de Pi
+#Actualizamos el array new_numbers con los numeros nuevos de Pi.
 def actualizar_fila(numero):
     for i in range(len(new_numbers) - 1):
         new_numbers[i] = new_numbers[i + 1]
