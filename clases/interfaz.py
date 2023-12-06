@@ -46,23 +46,22 @@ class ClaseInterfaz:
 
     #Se muestra aqui la imagene (por el for se muestran todas por ahora pero sin el for no tenemos label para poder usar la funcion de cambiar_imagen
     def mostrar_imagenes(self):
-            self.labels = []
-            for idx, photo in enumerate(self.photos):
-                 label = tk.Label(self.grid_frame, image=photo)
-                 label.grid(row=0, column=idx)
-                 self.labels.append(label)
-            self.label = self.labels[0]
-            #ya con el label solo hay que darles un numero de foto que coincida con su posicion en la biblioteca de imagen_paht.
-            self.imagenes_por_numero = {
-                "0": self.photos[0],
-                "1": self.photos[1],
-                "2": self.photos[2],
-                "3": self.photos[3],
-                "4": self.photos[4],
-                "5": self.photos[5],
-                "6": self.photos[6],
-                # Agregar para el resto de las imágenes según su número
-            }
+        self.labels = []
+        initial_photo = self.photos[0]
+        label = tk.Label(self.grid_frame, image=initial_photo)
+        label.grid(row=0, column=0)
+        self.labels.append(label)
+        self.label = self.labels[0]
+
+        self.imagenes_por_numero = {
+            "0": self.photos[0],
+            "1": self.photos[1],
+            "2": self.photos[2],
+            "3": self.photos[3],
+            "4": self.photos[4],
+            "5": self.photos[5],
+            "6": self.photos[6],
+        }
 
     #Aqui se crea la interfz que crea el mensaje de la accion dice numero pq antes mostraba un numero jeje salu2
     def crear_interfaz_numero(self):
