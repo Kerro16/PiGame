@@ -8,89 +8,94 @@ class ClaseInterfaz:
         #root crea el frame o la interfaz
         self.root = root
         self.root.title("Interfaz con imagen")
+        self.cargar_imagenes()
+        self.crear_frame_pack()
+        self.crear_frame_grid()
+        self.mostrar_imagenes()
+        self.crear_interfaz_numero()
 
-        #llenamos las rutas con los nombres de las imagenes
-        self.imagen1 = Image.open("imagenes/arriba.jpg")  # Ruta de la imagen 1
-        self.imagen2 = Image.open("imagenes/abajo.jpg")  # Ruta de la imagen 2
-        self.imagen3 = Image.open("imagenes/derecha.jpg")  # Ruta de la imagen 3
-        self.imagen4 = Image.open("imagenes/izquierda.jpg")  # Ruta de la imagen 4
-        self.imagen5 = Image.open("imagenes/granada.jpg")  # Ruta de la imagen 5
-        self.imagen6 = Image.open("imagenes/disparar.jpg")  # Ruta de la imagen 6
-        self.imagen7 = Image.open("imagenes/enter.jpg")  # Ruta de la imagen 7
+    def cargar_imagenes(self):
+        self.imagen_paths = [
+                "imagenes/arriba.jpg",
+                "imagenes/abajo.jpg",
+                "imagenes/derecha.jpg",
+                "imagenes/izquierda.jpg",
+                "imagenes/granada.jpg",
+                "imagenes/disparar.jpg",
+                "imagenes/enter.jpg"
+        ]
 
-        # Redimensionar las imágenes al tamaño deseado (600x300)
-        ancho_deseado = 600
-        alto_deseado = 300
-        self.imagen1 = self.imagen1.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
-        self.imagen2 = self.imagen2.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
-        self.imagen3 = self.imagen3.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
-        self.imagen4 = self.imagen4.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
-        self.imagen5 = self.imagen5.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
-        self.imagen6 = self.imagen6.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
-        self.imagen7 = self.imagen7.resize((ancho_deseado, alto_deseado), Image.Resampling.LANCZOS)
+        self.imagenes = [Image.open(path).resize((600, 300), Image.Resampling.LANCZOS) for path in self.imagen_paths]
+        self.photos = [ImageTk.PhotoImage(imagen) for imagen in self.imagenes]
 
-        # Frame para los elementos con pack()
-        self.pack_frame = tk.Frame(self.root)
-        self.pack_frame.pack()
+    def crear_frame_pack(self):
+            self.pack_frame = tk.Frame(self.root)
+            self.pack_frame.pack()
+            self.boton_cerrar = tk.Button(self.pack_frame, text="Cerrar", command=self.cerrar_interfaz)
+            self.boton_cerrar.pack()
 
-        #agregamos el boton de cerrar interfaz
-        self.boton_cerrar = tk.Button(self.pack_frame, text="Cerrar", command=lambda: [self.root.destroy(), sys.exit()])
-        self.boton_cerrar.pack()
+    def crear_frame_grid(self):
+                self.grid_frame = tk.Frame(self.root)
+                self.grid_frame.pack()
+                self.grid_frame2 = tk.Frame(self.root)
+                self.grid_frame2.pack()
 
-        #convertimos a un frame de imagen dentro de la interfaz
-        self.photo1 = ImageTk.PhotoImage(self.imagen1)
-        self.photo2 = ImageTk.PhotoImage(self.imagen2)
-        self.photo3 = ImageTk.PhotoImage(self.imagen3)
-        self.photo4 = ImageTk.PhotoImage(self.imagen4)
-        self.photo5 = ImageTk.PhotoImage(self.imagen5)
-        self.photo6 = ImageTk.PhotoImage(self.imagen6)
-        self.photo7 = ImageTk.PhotoImage(self.imagen7)
+    def mostrar_imagenes(self):
+            self.labels = []
+            for idx, photo in enumerate(self.photos):
+                 label = tk.Label(self.grid_frame, image=photo)
+                 label.grid(row=0, column=idx)
+                 self.labels.append(label)
+            self.label = self.labels[0]
 
-        # Frame para los elementos con grid()
-        self.grid_frame = tk.Frame(self.root)
-        self.grid_frame.pack()
-        # Frame para los elementos con grid()
-        self.grid_frame2 = tk.Frame(self.root)
-        self.grid_frame2.pack()
+            self.imagenes_por_numero = {
+                "0": self.photos[0],
+                "1": self.photos[1],
+                "2": self.photos[2],
+                "3": self.photos[3],
+                "4": self.photos[4],
+                "5": self.photos[5],
+                "6": self.photos[6],
+                # Agregar para el resto de las imágenes según su número
+            }
 
-        #iniciamos la intefaz creando el label
-        #self.label = tk.Label(self.root, image=self.photo1)
-        #self.label.pack()
+    def cerrar_interfaz(self):
+                        self.root.destroy()
+                        sys.exit()
 
-        self.label = tk.Label(self.grid_frame, image=self.photo1)
-        self.label.grid(row=0, column=0)
-
-
-        self.root.title("Interfaz con numero")
-        # definimos la interfaz que muestra el numero gigante de Pi
-        self.root.geometry("650x800")  # Tamaño de la ventana
-        self.canvas = tk.Canvas(self.root, width=600, height=300, bg="orange")
-        self.canvas.pack()
-
-
-        self.numero_actual = "Pausa"
-        self.texto_numero = self.canvas.create_text(300, 150, text=str(self.numero_actual), font=("Arial", 110),fill="white")
-    # con esta clase cambiamos el numero de la interfaz con el numero gigante
-        self.create_number_squares()
+    def crear_interfaz_numero(self):
+                            self.root.title("Interfaz con numero")
+                            self.root.geometry("650x800")
+                            self.canvas = tk.Canvas(self.root, width=600, height=300, bg="orange")
+                            self.canvas.pack()
+                            self.numero_actual = "Pausa"
+                            self.texto_numero = self.canvas.create_text(300, 150, text=str(self.numero_actual),
+                                                                        font=("Arial", 110), fill="white")
+                            self.create_number_squares()  # Asumiendo que esta función está definida en otro lugar
 
 
     #definimos los cuadrados naranjas
     def create_square(self, number, color):
         label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=5, height=2, font=("Arial", 12))
-        return label
+        return
+
+
     #Cuadrado rojo
     def create_square_red(self, number, color):
         label = tk.Label(self.grid_frame2, text=str(number), bg=color, width=10, height=4, font=("Arial", 24))
         return label
+
+
     #actualizamos los numeros en los cuadrados
     def update_numbers(self,new_numbers):
         for i, number in enumerate(new_numbers):
             self.squares[i].configure(text=str(number))
+
+
     #datos de los cuadrados y creacion de los mismos
     def create_number_squares(self):
         colors = ["orange","red"]
         initial_numbers = list(range(1, 10))
-
         squares = []
         for i in range(9):
             if(i != 8):
@@ -101,7 +106,6 @@ class ClaseInterfaz:
                 square = self.create_square_red(0, colors[1])
                 square.grid(row=1, column=i, padx=0, pady=0)
                 squares.append(square)
-
         self.squares = squares
 
 
@@ -121,10 +125,8 @@ class ClaseInterfaz:
         # Aquí agrega el código para crear los botones y su funcionalidad
         frame = tk.Frame(self.root)
         frame.pack()
-
         metal_slug_btn = tk.Button(frame, text="MetalSlug", command=lambda: [self.enviar_nombre("MetalSlug"),self.root.destroy()])
         metal_slug_btn.pack(side=tk.LEFT, padx=10, pady=20)
-
         vampire_btn = tk.Button(frame, text="Vampire", command=lambda: [self.enviar_nombre("Vampire"),self.root.destroy()])
         vampire_btn.pack(side=tk.LEFT, padx=10, pady=20)
 
@@ -137,53 +139,54 @@ class ClaseInterfaz:
         self.root3.geometry("600x300")  # Tamaño de la ventana
         self.canvas = tk.Canvas(self.root3, width=600, height=300, bg="orange")
         self.canvas.pack()
-
         self.canvas.create_text(300, 150, text="5", font=("Arial", 200), fill="white")
 
+
     def cambiar_imagen(self, numero):
+        imagen = self.imagenes_por_numero.get(numero)
         if clases.globales.mi_variable_global == "Vampire":
             if numero == "0":
-                self.label.config(image=self.photo1)
+                self.label.config(image=self.imagenes_por_numero.get("0"))
             elif numero == "1":
-                self.label.config(image=self.photo2)
+                self.label.config(image=self.imagenes_por_numero.get("1"))
             elif numero == "2":
-                self.label.config(image=self.photo4)
+                self.label.config(image=self.imagenes_por_numero.get("3"))
             elif numero == "3":
-                self.label.config(image=self.photo3)
+                self.label.config(image=self.imagenes_por_numero.get("2"))
             elif numero == "4":
-                self.label.config(image=self.photo5)
+                self.label.config(image=self.imagenes_por_numero.get("6"))
             elif numero == "5":
-                self.label.config(image=self.photo4)
+                self.label.config(image=self.imagenes_por_numero.get("0"))
             elif numero == "6":
-                self.label.config(image=self.photo3)
+                self.label.config(image=self.imagenes_por_numero.get("1"))
             elif numero == "7":
-                self.label.config(image=self.photo1)
+                self.label.config(image=self.imagenes_por_numero.get("3"))
             elif numero == "8":
-                self.label.config(image=self.photo2)
+                self.label.config(image=self.imagenes_por_numero.get("2"))
             elif numero == "9":
-                self.label.config(image=self.photo5)
+                self.label.config(image=self.imagenes_por_numero.get("6"))
 
         if clases.globales.mi_variable_global == "MetalSlug":
             if numero == "0":
-                self.label.config(image=self.photo1)
+                self.label.config(image=self.imagenes_por_numero.get("0"))
             elif numero == "1":
-                self.label.config(image=self.photo2)
+                self.label.config(image=self.imagenes_por_numero.get("1"))
             elif numero == "2":
-                self.label.config(image=self.photo4)
+                self.label.config(image=self.imagenes_por_numero.get("3"))
             elif numero == "3":
-                self.label.config(image=self.photo3)
+                self.label.config(image=self.imagenes_por_numero.get("2"))
             elif numero == "4":
-                self.label.config(image=self.photo6)
+                self.label.config(image=self.imagenes_por_numero.get("5"))
             elif numero == "5":
-                self.label.config(image=self.photo5)
+                self.label.config(image=self.imagenes_por_numero.get("4"))
             elif numero == "6":
-                self.label.config(image=self.photo3)
+                self.label.config(image=self.imagenes_por_numero.get("2"))
             elif numero == "7":
-                self.label.config(image=self.photo1)
+                self.label.config(image=self.imagenes_por_numero.get("0"))
             elif numero == "8":
-                self.label.config(image=self.photo3)
+                self.label.config(image=self.imagenes_por_numero.get("2"))
             elif numero == "9":
-                self.label.config(image=self.photo4)
+                self.label.config(image=self.imagenes_por_numero.get("3"))
 
 
 

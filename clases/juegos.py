@@ -69,13 +69,13 @@ def vampire(numero, index):
     elif numero == "4":
         return presionarBotonSencillo('enter',index,numero,'Enter')
     elif numero == "5":
-        return presionarBotonSencillo('left',index,numero,'Izquierda')
-    elif numero == "6":
-        return presionarBotonSencillo('right',index,numero,'Derecha')
-    elif numero == "7":
         return presionarBotonSencillo('up',index,numero,'Arriba')
+    elif numero == "6":
+        return presionarBotonSencillo('down',index,numero,'Down')
+    elif numero == "7":
+        return presionarBotonSencillo('left',index,numero,'Izquierda')
     elif numero == "8":
-        return presionarBotonSencillo('down',index,numero,'Abajo')
+        return presionarBotonSencillo('right',index,numero,'Derecha')
     elif numero == "9":
         return presionarBotonSencillo('enter',index,numero,'Enter')
 
