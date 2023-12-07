@@ -1,7 +1,10 @@
+import sys
+
 import clases.juegos
 from clases.juegos import *
 import tkinter as tk
 from tkinter import filedialog
+from tkinter import messagebox
 from clases.globales import mi_variable_global
 
 # se abre la ruta del archivo
@@ -15,13 +18,18 @@ funciones_juegos = {
 
 
 def obtener_path():
-    root = tk.Tk()
-    root.withdraw()
-    file_path = "C:/Users/fas_c/Desktop/pi-billion.txt"  # filedialog.askopenfilename(title="Selecciona un archivo")
+
+    file_path = filedialog.askopenfilename(title="Selecciona un archivo")
+
+    if not file_path:
+        messagebox.showinfo("Error", "No se selecciono un archivo")
+        sys.exit("Error")
+
     return file_path
 
 # Se lee el archivo donde tenemos pi
 def leerarchivo(file_path):
+
     try:
         with open(file_path, 'r') as file:
             archivotxxt = file.read()
@@ -49,10 +57,12 @@ def recorrer_pi(archivotxxt):
         print(funcion_juego(numeroPI, index))
 
 # Este se manda llamar para iniciar con la lectura de el archivo.
+
 def iniciarlector():
 
    file_path = obtener_path()
-   archivotxxt = leerarchivo(file_path)
+   if not file_path:
+    archivotxxt = leerarchivo(file_path)
    if archivotxxt:
      recorrer_pi(archivotxxt)
 
