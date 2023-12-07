@@ -34,6 +34,12 @@ class ClaseInterfaz:
     def crear_frame_pack(self):
             self.pack_frame = tk.Frame(self.root)
             self.pack_frame.pack()
+            self.boton_cerrar = tk.Button(self.pack_frame, text="Pausar", command= self.pausar_programa)
+            self.boton_cerrar.pack()
+
+
+    def pausar_programa(self):
+        input("Press enter to continue")
 
     #se crea un frame para tener las imagenes y los cuadros se usa grid
     def crear_frame_grid(self):
@@ -66,7 +72,8 @@ class ClaseInterfaz:
     #Aqui se crea la interfz que crea el mensaje de la accion dice numero pq antes mostraba un numero jeje salu2/
     def crear_interfaz_numero(self):
                             self.root.title("Interfaz con numero")
-                            self.root.geometry("600x900")
+                            self.root.geometry("600x950")
+                            self.root.configure(bg='#073b4c')
                             self.canvas = tk.Canvas(self.root, width=600, height=300, bg="#ffd166")
                             self.canvas.pack()
                             self.numero_actual = "Pausa"
