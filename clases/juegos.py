@@ -4,7 +4,7 @@ pyautogui.FAILSAFE = False #Elimina un crash por mover el mouse o el teclado a c
 from clases.interfaz_storage import InterfazStorage
 
 new_numbers = [0, 0, 0, 0, 0, 0, 0, 0, 9]
-cadena_movimientos = []
+
 
 
 
@@ -14,10 +14,6 @@ def actualizar_fila(numero):
         new_numbers[i] = new_numbers[i + 1]
         new_numbers[8] = numero
 
-def actualizar_cadena_movimientos(numero):
-    cadena_movimientos.append(numero)
-    if cadena_movimientos[2]:
-        a= 1
 
 #Todos los botones hacen un keydown o keyup que es el presionado, el interfaz.cambiar_imagen se usa para cambiar la imagen en la interfaz
 def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
@@ -131,15 +127,15 @@ def mortal_kombat(numero, index):
     elif numero == "3":
         return boton_rapido('d', index, numero, 'Derecha')
     elif numero == "4":
-        return boton_rapido('j', index, numero, 'Enter')
+        return boton_rapido('j', index, numero, 'Golpe')
     elif numero == "5":
-        return boton_rapido('k', index, numero, 'Arriba')
+        return boton_rapido('k', index, numero, 'Patada')
     elif numero == "6":
-        return boton_rapido('l', index, numero, 'Down')
+        return boton_rapido('l', index, numero, 'Golpe')
     elif numero == "7":
-        return boton_rapido('i', index, numero, 'Izquierda')
+        return boton_rapido('j', index, numero, 'Golpe')
     elif numero == "8":
-        return boton_rapido('o', index, numero, 'Derecha')
+        return boton_rapido('o', index, numero, 'Defensa')
     elif numero == "9":
-        return boton_rapido('j', index, numero, 'Enter')
+        return boton_rapido('j', index, numero, 'Golpe')
 
