@@ -145,6 +145,9 @@ class ClaseInterfaz:
         metal_slug_btn.pack(side=tk.LEFT, padx=10, pady=20)
         vampire_btn = tk.Button(frame, text="Vampire", command=lambda: [self.enviar_nombre("Vampire"),self.root.destroy()])
         vampire_btn.pack(side=tk.LEFT, padx=10, pady=20)
+        mortal_btn = tk.Button(frame, text="Mortal",
+                                command=lambda: [self.enviar_nombre("Mortal"), self.root.destroy()])
+        mortal_btn.pack(side=tk.LEFT, padx=10, pady=20)
 
 
     def cambiar_imagen(self, numero):
@@ -172,6 +175,28 @@ class ClaseInterfaz:
                 self.label.config(image=self.imagenes_por_numero.get("6"))
 
         if clases.globales.mi_variable_global == "MetalSlug":
+            if numero == "0":
+                self.label.config(image=self.imagenes_por_numero.get("0"))
+            elif numero == "1":
+                self.label.config(image=self.imagenes_por_numero.get("1"))
+            elif numero == "2":
+                self.label.config(image=self.imagenes_por_numero.get("3"))
+            elif numero == "3":
+                self.label.config(image=self.imagenes_por_numero.get("2"))
+            elif numero == "4":
+                self.label.config(image=self.imagenes_por_numero.get("5"))
+            elif numero == "5":
+                self.label.config(image=self.imagenes_por_numero.get("4"))
+            elif numero == "6":
+                self.label.config(image=self.imagenes_por_numero.get("2"))
+            elif numero == "7":
+                self.label.config(image=self.imagenes_por_numero.get("0"))
+            elif numero == "8":
+                self.label.config(image=self.imagenes_por_numero.get("2"))
+            elif numero == "9":
+                self.label.config(image=self.imagenes_por_numero.get("3"))
+
+        if clases.globales.mi_variable_global == "Mortal":
             if numero == "0":
                 self.label.config(image=self.imagenes_por_numero.get("0"))
             elif numero == "1":
