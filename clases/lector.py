@@ -20,7 +20,7 @@ funciones_juegos = {
 
 def obtener_path():
 
-    file_path = "C:/Users/fas_c/Desktop/pi-billion.txt" #filedialog.askopenfilename(title="Selecciona un archivo")
+    file_path = "C:/Users/R20/Desktop/pi-billion.txt" #filedialog.askopenfilename(title="Selecciona un archivo")
 
     if not file_path:
         messagebox.showinfo("Error", "No se selecciono un archivo")

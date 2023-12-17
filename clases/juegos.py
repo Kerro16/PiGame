@@ -31,6 +31,23 @@ def presionarBotonDoble(letraUno, letraDos, index,numero, movimiento):
     pyautogui.keyUp(letraDos)
     return "pensanding..."
 
+def presionar_boton_triple(letraUno, letraDos,letraTres,index,numero, movimiento):
+    print(movimiento)
+    interfaz = InterfazStorage.interfaz
+    interfaz.cambiar_imagen(numero)
+    interfaz.cambiar_accion(movimiento,index)
+    actualizar_fila(numero)
+    interfaz.update_numbers(new_numbers)
+    print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
+    pyautogui.keyDown(letraUno)
+    pyautogui.keyDown(letraDos)
+    pyautogui.keyDown(letraTres)
+    time.sleep(1)
+    pyautogui.keyUp(letraUno)
+    pyautogui.keyUp(letraDos)
+    pyautogui.keyUp(letraTres)
+    return "pensanding..."
+
 
 def presionarBotonSencillo(letra, index,numero, movimiento):
     print(movimiento)
@@ -62,6 +79,7 @@ def boton_rapido(letra, index,numero, movimiento):
     interfaz.update_numbers(new_numbers)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
     pyautogui.keyDown(letra)
+    time.sleep(0.5)
     pyautogui.keyUp(letra)
     return "pensanding...."
 
@@ -93,10 +111,10 @@ def vampire(numero, index):
 
 # Metal Slug /arriba, abajo, izquierda, derecha, a , s , d  se agrega un enter cada que el index pasa por 9 iteraciones/
 def metalSlug(numero, index):
-    if index%9 == 0:
+    if index%8 == 0:
         enterautomatico(index)
     if numero == "0":
-        return  presionarBotonDoble('up', 'a', index,numero,'Arriba + Disparo')
+        return  presionarBotonDoble('up', 'a', index,numero,'A+Disparo')
     elif numero == "1":
         return presionarBotonSencillo('down',index,numero,'Abajo')
     elif numero == "2":
@@ -104,17 +122,17 @@ def metalSlug(numero, index):
     elif numero == "3":
         return presionarBotonSencillo('right',index,numero,'Derecha')
     elif numero == "4":
-        return presionarBotonSencillo('a',index,numero,'Disparar')
+        return presionar_boton_triple('d','down','a',index,numero,'D+Abajo')
     elif numero == "5":
         return presionarBotonSencillo('s',index,numero,'Granada')
     elif numero == "6":
-        return presionarBotonDoble('right', 'a', index, numero, 'Derecha + Disparo')
+        return presionarBotonDoble('right', 'a', index, numero, 'D+Disparo')
     elif numero == "7":
-        return presionarBotonDoble('up', 'a', index, numero, 'Arriba + Disparo')
+        return presionarBotonDoble('up', 'a', index, numero, 'A+Disparo')
     elif numero == "8":
-        return presionarBotonDoble('d', 'right', index, numero, 'Salto + Derecho')
+        return presionarBotonDoble('d', 'right', index, numero, 'S+Derecho')
     elif numero == "9":
-        return presionarBotonDoble('d', 'left', index, numero, 'Salto + Izquierda')
+        return presionarBotonDoble('d', 'left', index, numero, 'S+Izquierda')
 
 
 def mortal_kombat(numero, index):
