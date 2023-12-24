@@ -14,6 +14,7 @@ funciones_juegos = {
     "Vampire": clases.juegos.vampire,
     "MetalSlug": clases.juegos.metalSlug,
     "Mortal": clases.juegos.mortal_kombat,
+    "Pesca": clases.juegos.Pesca,
     # Agrega más juegos aquí si es necesario
 }
 

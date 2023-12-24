@@ -1,9 +1,15 @@
 import time
 import pyautogui
+
+import clases.globales
+
 pyautogui.FAILSAFE = False #Elimina un crash por mover el mouse o el teclado a cierta parte
 from clases.interfaz_storage import InterfazStorage
+import random
+from clases.globales import posicion_secuencia_botones
 
 new_numbers = [0, 0, 0, 0, 0, 0, 0, 0, 9]
+secuencia_botones = ["a","b","c"]
 
 
 
@@ -78,11 +84,126 @@ def boton_rapido(letra, index,numero, movimiento):
     actualizar_fila(numero)
     interfaz.update_numbers(new_numbers)
     print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
-    pyautogui.keyDown(letra)
-    time.sleep(0.5)
-    pyautogui.keyUp(letra)
+    if letra == "u":
+        numero_aleatorio = random.randint(1, 4)
+        if numero_aleatorio == 1:
+            pyautogui.keyDown("a")
+            pyautogui.keyDown("s")
+            pyautogui.keyDown("d")
+            pyautogui.keyDown("k")
+            time.sleep(0.5)
+            pyautogui.keyUp("a")
+            pyautogui.keyUp("s")
+            pyautogui.keyUp("d")
+            pyautogui.keyUp("k")
+        elif numero_aleatorio == 2:
+            pyautogui.keyDown("d")
+            pyautogui.keyDown("s")
+            pyautogui.keyDown("a")
+            pyautogui.keyDown("k")
+            time.sleep(0.5)
+            pyautogui.keyUp("d")
+            pyautogui.keyUp("s")
+            pyautogui.keyUp("a")
+            pyautogui.keyUp("k")
+        elif numero_aleatorio == 3:
+            pyautogui.keyDown("d")
+            pyautogui.keyDown("a")
+            pyautogui.keyDown("j")
+            time.sleep(0.5)
+            pyautogui.keyUp("d")
+            pyautogui.keyUp("a")
+            pyautogui.keyUp("j")
+        elif numero_aleatorio == 4:
+            pyautogui.keyDown("a")
+            pyautogui.keyDown("d")
+            pyautogui.keyDown("j")
+            time.sleep(0.5)
+            pyautogui.keyUp("a")
+            pyautogui.keyUp("d")
+            pyautogui.keyUp("j")
+    else:
+        pyautogui.keyDown(letra)
+        pyautogui.keyUp(letra)
     return "pensanding...."
 
+def boton_combos_mortal(letra, index,numero, movimiento):
+    if  clases.globales.posicion_secuencia_botones == 1:
+        clases.globales.posicion_secuencia_botones = 2
+        secuencia_botones[0] = letra
+    elif clases.globales.posicion_secuencia_botones == 2:
+        clases.globales.posicion_secuencia_botones = 3
+        secuencia_botones[1] = letra
+    elif clases.globales.posicion_secuencia_botones == 3:
+        clases.globales.posicion_secuencia_botones = 1
+        secuencia_botones[2] = letra
+        print(movimiento)
+        interfaz = InterfazStorage.interfaz
+        interfaz.cambiar_imagen(numero)
+        interfaz.cambiar_accion(movimiento, index)
+        actualizar_fila(numero)
+        interfaz.update_numbers(new_numbers)
+        print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
+        if letra == "u":
+            numero_aleatorio = random.randint(1, 4)
+            if numero_aleatorio == 1:
+                pyautogui.keyDown("a")
+                pyautogui.keyDown("s")
+                pyautogui.keyDown("d")
+                pyautogui.keyDown("k")
+                time.sleep(0.5)
+                pyautogui.keyUp("a")
+                pyautogui.keyUp("s")
+                pyautogui.keyUp("d")
+                pyautogui.keyUp("k")
+            elif numero_aleatorio == 2:
+                pyautogui.keyDown("d")
+                pyautogui.keyDown("s")
+                pyautogui.keyDown("a")
+                pyautogui.keyDown("k")
+                time.sleep(0.5)
+                pyautogui.keyUp("d")
+                pyautogui.keyUp("s")
+                pyautogui.keyUp("a")
+                pyautogui.keyUp("k")
+            elif numero_aleatorio == 3:
+                pyautogui.keyDown("d")
+                pyautogui.keyDown("a")
+                pyautogui.keyDown("j")
+                time.sleep(0.5)
+                pyautogui.keyUp("d")
+                pyautogui.keyUp("a")
+                pyautogui.keyUp("j")
+            elif numero_aleatorio == 4:
+                pyautogui.keyDown("a")
+                pyautogui.keyDown("d")
+                pyautogui.keyDown("j")
+                time.sleep(0.5)
+                pyautogui.keyUp("a")
+                pyautogui.keyUp("d")
+                pyautogui.keyUp("j")
+        else:
+            pyautogui.keyDown(secuencia_botones[0])
+            pyautogui.keyDown(secuencia_botones[1])
+            pyautogui.keyDown(secuencia_botones[2])
+            time.sleep(0.2)
+            pyautogui.keyUp(secuencia_botones[0])
+            pyautogui.keyUp(secuencia_botones[1])
+            pyautogui.keyUp(secuencia_botones[2])
+    return "numero_aleatorio"
+
+def boton_pescar(letra, index,numero, movimiento):
+    print(movimiento)
+    interfaz = InterfazStorage.interfaz
+    interfaz.cambiar_imagen(numero)
+    interfaz.cambiar_accion(movimiento,index)
+    actualizar_fila(numero)
+    interfaz.update_numbers(new_numbers)
+    print("El numero de PI es {} y esta en la posicion {}".format(numero, index))
+    pyautogui.keyDown(letra)
+    time.sleep(3)
+    pyautogui.keyUp(letra)
+    return "pensanding...."
 
 
 #Vampire Survivors /arriba, abajo, izquierda, derecha y enter/
@@ -151,9 +272,15 @@ def mortal_kombat(numero, index):
     elif numero == "6":
         return boton_rapido('l', index, numero, 'Golpe')
     elif numero == "7":
-        return boton_rapido('j', index, numero, 'Golpe')
+        return boton_rapido('i', index, numero, 'Golpe')
     elif numero == "8":
         return boton_rapido('o', index, numero, 'Defensa')
     elif numero == "9":
-        return boton_rapido('j', index, numero, 'Golpe')
+        return boton_rapido('u', index, numero, 'Combo')
+
+def Pesca(numero,index):
+    if numero == "0" or numero == "2" or numero == "4" or numero == "6" or numero == "8":
+        return boton_pescar('6', index, numero, 'jalar')
+    elif numero == "1" or numero == "3" or numero == "5" or numero == "7" or numero == "9":
+        return boton_pescar('7', index, numero, 'soltar')
 
