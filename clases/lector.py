@@ -14,6 +14,7 @@ funciones_juegos = {
     "Vampire": clases.juegos.vampire,
     "MetalSlug": clases.juegos.metalSlug,
     "Mortal": clases.juegos.mortal_kombat,
+    "Pesca": clases.juegos.Pesca,
     # Agrega más juegos aquí si es necesario
 }
 
@@ -61,9 +62,9 @@ def recorrer_pi(archivotxxt):
 
 def iniciarlector():
 
-   file_path = obtener_path()
-  # if not file_path:
+ file_path = obtener_path()
+ if file_path:
    archivotxxt = leerarchivo(file_path)
-  # if archivotxxt:
-   recorrer_pi(archivotxxt)
+   if archivotxxt:
+    recorrer_pi(archivotxxt)
 

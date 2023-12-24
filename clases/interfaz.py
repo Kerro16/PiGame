@@ -24,7 +24,9 @@ class ClaseInterfaz:
                 "imagenes/izquierda.jpg",
                 "imagenes/granada.jpg",
                 "imagenes/disparar.jpg",
-                "imagenes/enter.jpg"
+                "imagenes/enter.jpg",
+                "imagenes/pipescados.png",
+                "imagenes/pipescauno.png",
         ]
         #Se define como se quiere que se vea la imagen
         self.imagenes = [Image.open(path).resize((600, 300), Image.Resampling.LANCZOS) for path in self.imagen_paths]
@@ -67,6 +69,8 @@ class ClaseInterfaz:
             "4": self.photos[4],
             "5": self.photos[5],
             "6": self.photos[6],
+            "7": self.photos[7],
+            "8": self.photos[8],
         }
 
     #Aqui se crea la interfz que crea el mensaje de la accion dice numero pq antes mostraba un numero jeje salu2/
@@ -148,6 +152,9 @@ class ClaseInterfaz:
         mortal_btn = tk.Button(frame, text="Mortal",
                                 command=lambda: [self.enviar_nombre("Mortal"), self.root.destroy()])
         mortal_btn.pack(side=tk.LEFT, padx=10, pady=20)
+        mortal_combos_btn = tk.Button(frame, text="Pesca",
+                               command=lambda: [self.enviar_nombre("Pesca"), self.root.destroy()])
+        mortal_combos_btn.pack(side=tk.LEFT, padx=10, pady=20)
 
 
     def cambiar_imagen(self, numero):
@@ -196,7 +203,7 @@ class ClaseInterfaz:
             elif numero == "9":
                 self.label.config(image=self.imagenes_por_numero.get("3"))
 
-        if clases.globales.mi_variable_global == "Mortal":
+        if clases.globales.mi_variable_global == "Mortal" :
             if numero == "0":
                 self.label.config(image=self.imagenes_por_numero.get("0"))
             elif numero == "1":
@@ -217,6 +224,12 @@ class ClaseInterfaz:
                 self.label.config(image=self.imagenes_por_numero.get("2"))
             elif numero == "9":
                 self.label.config(image=self.imagenes_por_numero.get("3"))
+
+        if clases.globales.mi_variable_global == "Pesca":
+            if numero == "0" or numero == "2" or numero == "4" or numero == "6" or numero == "8":
+                self.label.config(image=self.imagenes_por_numero.get("8"))
+            elif numero == "1" or numero == "3" or numero == "5" or numero == "7" or numero == "9":
+                self.label.config(image=self.imagenes_por_numero.get("7"))
 
     def cerrar_hilo(self):
         clases.globales.mi_variable_global = "Cerrar"
