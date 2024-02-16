@@ -1,4 +1,5 @@
 PiGame
+
 Pi Game es un programa en Python que utiliza las decimales de pi para simular la presión de un input dependiendo del número de pi que recorra. Este programa es una demostración divertida de cómo se puede utilizar pi en un contexto práctico y creativo.
 Requisitos
 
