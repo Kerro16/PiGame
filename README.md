@@ -10,8 +10,9 @@ Uso
     Clona el repositorio:
 
     bash
+    
+    git clone https://github.com/Kerro16/PiGame.git
 
-git clone https://github.com/Kerro16/PiGame.git
 
 En lector.py modifica el file_path con el path de tu archivo con pi.
 
