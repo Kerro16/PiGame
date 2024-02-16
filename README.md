@@ -16,7 +16,7 @@ Uso
 
 En lector.py modifica el file_path con el path de tu archivo con pi.
 
-Entra al directorio del repositorio:
+Entra al directorio del repositorio
 
 Ejecuta el programa:
 
